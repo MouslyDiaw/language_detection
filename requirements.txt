@@ -11,4 +11,4 @@ fasttext == 0.9.1
 pytest == 5.3.5
 
 # language_detection/setup.py: 5
-setuptools == 42.0.1.post20191125
+setuptools == 46.3.0
