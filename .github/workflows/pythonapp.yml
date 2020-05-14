@@ -27,7 +27,7 @@ jobs:
     - name: Lint with Pylint
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        pylint language_detection
+        pylint .
     - name: Test with pytest
       run: |
         pytest --cov --cov-config=.coveragerc --cov-report=term-missing

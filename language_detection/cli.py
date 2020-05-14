@@ -4,7 +4,7 @@ import click
 
 
 @click.command()
-def main(args=None):
+def main():
     """Console script for language_detection."""
     click.echo("Replace this message by putting your code into "
                "language_detection.cli.main")
