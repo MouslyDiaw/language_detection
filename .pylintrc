@@ -7,6 +7,7 @@ disable=
     R0914, # too-many-locals
     R0903, # too-few-public-methods
     R0902, # too-many-instance-attributes
+    R1705, # Unnecessary "elif" after "return" (no-else-return)
     W1202, # logging-format-interpolation
     fixme,
 
