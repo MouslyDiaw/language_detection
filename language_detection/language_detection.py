@@ -22,14 +22,13 @@ def langdetect(text: str) -> str:
         - Input doesn't contains any punctuation (aka \\n)
         - ValueError: we raise an error if it occurs any \n in text
     """
-    if isinstance(text, List):
-        sanitized_text = list(map(remove_newline, text))
-    else:
+    if isinstance(text, str):
         sanitized_text = remove_newline(text)
-    try:
-        language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)
-        return language_pred[0][0].split("__label__")[-1], language_pred[1][0]
-    except ValueError:
-        logging.exception("Input doesn't contain `\\n`")
-    except AttributeError:
-        logging.exception(f"Input must be a str but you give {text}")
+        language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)[0]
+        return language_pred[0][0].split("__label__")[1]
+    elif isinstance(text, str):
+        sanitized_text = list(map(remove_newline, text))
+        language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)[0]
+        return [pred[0].split("__label__")[1] for pred in language_pred]
+    else:
+        raise ValueError("Invalid type of argument. It sould be either a str or a list of str.")

@@ -18,5 +18,5 @@ def test_language_detector_fasttext_format(text_example):
 
     detected_lang_single = langdetect(text_example)
     detected_lang_batch = langdetect([text_example])
-    assert isinstance(detected_lang_single, tuple)
+    assert isinstance(detected_lang_single, str)
     assert isinstance(detected_lang_batch, list)
