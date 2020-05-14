@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ Module for Language detection """
-from typing import List
 
 from language_detection import FT_MODEL_LANGUAGE
 from language_detection.helpers.feature_engineering import remove_newline
@@ -24,7 +23,7 @@ def langdetect(text: str) -> str:
         sanitized_text = remove_newline(text)
         language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)[0]
         return language_pred[0].split("__label__")[1]
-    elif isinstance(text, List):
+    elif isinstance(text, list):
         sanitized_text = list(map(remove_newline, text))
         language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)[0]
         return [pred[0].split("__label__")[1] for pred in language_pred]
