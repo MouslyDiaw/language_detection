@@ -1,0 +1,6 @@
+ignore = E226,E302,E41,E501,D203
+exclude =
+    # No need to traverse our git directory
+    .git
+max-complexity = 10
+max-line-length=130

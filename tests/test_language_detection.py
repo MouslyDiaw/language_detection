@@ -1,37 +1,34 @@
-#!/usr/bin/env python
-
-"""Tests for `language_detection` package."""
-
+"""Tests for `language-detection` package."""
 import pytest
-
-from click.testing import CliRunner
-
-from language_detection import language_detection
-from language_detection import cli
+from language_detection.language_detection import langdetect
 
 
 @pytest.fixture
-def response():
-    """Sample pytest fixture.
+def text_example():
+    text = "JobTeaser est une entreprise française qui fournit des solutions de recrutement et marque employeur aux \
+    entreprises pour embaucher des jeunes talents et une plateforme carrières gratuite pour les services carrières \
+    des établissements d’enseignement supérieur en Europe."
+    return text
 
-    See more at: http://doc.pytest.org/en/latest/fixture.html
+
+def test_language_detector_format(text_example):
     """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+    Test output format.
+    """
+
+    detected_lang_single = langdetect(text_example)
+    detected_lang_batch = langdetect([text_example])
+    assert isinstance(detected_lang_single, str)
+    assert isinstance(detected_lang_batch, list)
 
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+def test_language_detector_langdetect_output(text_example):
+    """
+    Test output result.
+    """
 
-
-def test_command_line_interface():
-    """Test the CLI."""
-    runner = CliRunner()
-    result = runner.invoke(cli.main)
-    assert result.exit_code == 0
-    assert 'language_detection.cli.main' in result.output
-    help_result = runner.invoke(cli.main, ['--help'])
-    assert help_result.exit_code == 0
-    assert '--help  Show this message and exit.' in help_result.output
+    detected_lang_single = langdetect(text_example)
+    detected_lang_batch = langdetect([text_example])
+    assert detected_lang_single == "fr"
+    assert detected_lang_batch == ["fr"]
+    assert len(detected_lang_batch) == 1
