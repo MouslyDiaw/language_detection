@@ -23,8 +23,8 @@ def langdetect(text: str) -> str:
     """
     sanitized_text = remove_newline(text)
     try:
-        ft_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1, threshold=0.0)
-        return ft_pred[0][0].split("__label__")[-1]
+        language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)
+        return language_pred[0][0].split("__label__")[-1], language_pred[1][0]
     except ValueError:
         logging.exception("Input doesn't contain `\\n`")
     except AttributeError:
