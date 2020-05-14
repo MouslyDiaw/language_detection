@@ -29,4 +29,4 @@ def langdetect(text: str) -> str:
         language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)[0]
         return [pred[0].split("__label__")[1] for pred in language_pred]
     else:
-        raise ValueError("Invalid type of argument. It sould be either a str or a list of str.")
+        raise ValueError("Invalid type of argument. It should be either a str or a list of str.")
