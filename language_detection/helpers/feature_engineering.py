@@ -13,4 +13,4 @@ def remove_newline(text: str) -> str:
         str: text without non-alphanumeric character, html tags, email, etc.
 
     """
-    return re.sub(r"\n+", "", text)
+    return re.sub(r"\n+", " ", text)

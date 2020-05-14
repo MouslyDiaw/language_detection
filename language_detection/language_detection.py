@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """ Module for Language detection """
 import logging
+from typing import List
 
 
 from language_detection import FT_MODEL_LANGUAGE
@@ -21,7 +22,10 @@ def langdetect(text: str) -> str:
         - Input doesn't contains any punctuation (aka \\n)
         - ValueError: we raise an error if it occurs any \n in text
     """
-    sanitized_text = remove_newline(text)
+    if isinstance(text, List):
+        sanitized_text = list(map(remove_newline, text))
+    else:
+        sanitized_text = remove_newline(text)
     try:
         language_pred = FT_MODEL_LANGUAGE.predict(sanitized_text, k=1)
         return language_pred[0][0].split("__label__")[-1], language_pred[1][0]
