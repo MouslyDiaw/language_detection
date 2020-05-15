@@ -36,5 +36,6 @@ def test_language_detector_langdetect_output(text_example):
 
 def test_language_detector_exception():
     """test that exception is raised for invalid input"""
-    with pytest.raises(Exception):
+    with pytest.raises(Exception) as e:
         assert langdetect(3)
+        assert "Invalid type of argument" in str(e)
