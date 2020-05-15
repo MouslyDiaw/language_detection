@@ -32,3 +32,9 @@ def test_language_detector_langdetect_output(text_example):
     assert detected_lang_single == "fr"
     assert detected_lang_batch == ["fr"]
     assert len(detected_lang_batch) == 1
+
+
+def test_language_detector_exception():
+    """test that exception is raised for invalid input"""
+    with pytest.raises(Exception):
+        assert langdetect(3)
