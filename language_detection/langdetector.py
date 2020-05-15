@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """ Module for Language detection """
+from os import path
+import fasttext
 
-from language_detection import FT_MODEL_LANGUAGE
 from language_detection.helpers.feature_engineering import remove_newline
+
+
+ROOT_PATH = path.dirname(path.abspath(__file__))
+
+MODEL_PATH = path.join(ROOT_PATH, "models", "lid.176.ftz")
+FT_MODEL_LANGUAGE = fasttext.load_model(MODEL_PATH)
 
 
 def langdetect(text: str) -> str:
