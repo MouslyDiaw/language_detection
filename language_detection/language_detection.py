@@ -9,7 +9,7 @@ from language_detection.helpers.feature_engineering import remove_newline
 
 ROOT_PATH = path.dirname(path.abspath(__file__))
 
-MODEL_PATH = path.join(ROOT_PATH, "models", "lid.176.ftz")
+MODEL_PATH = path.join(ROOT_PATH, "bin", "lid.176.ftz")
 
 
 class LanguageDetector:
