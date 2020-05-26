@@ -12,6 +12,11 @@ git clone git@github.com:MouslyDiaw/language_detection.git
 cd language-detection
 pip install .
 ```
+or,
+
+```
+pip install git+ssh://git@github.com/MouslyDiaw/language_detection.git
+```
 
 Basic usage
 --------
