@@ -11,6 +11,11 @@ def text_example():
     return text
 
 
+@pytest.fixture(scope="module")
+def input_error():
+    return 3
+
+
 def test_language_detector_format(text_example):
     """
     Test output format.
@@ -33,8 +38,8 @@ def test_language_detector_langdetect_output(text_example):
     assert len(detected_lang_batch) == 1
 
 
-def test_language_detector_exception():
+def test_language_detector_exception(input_error):
     """ test that exception is raised for invalid input """
     with pytest.raises(Exception) as e:
-        assert LANG.langdetect(3)
+        assert LANG.langdetect(input_error)
         assert "Invalid type of argument" in str(e)
