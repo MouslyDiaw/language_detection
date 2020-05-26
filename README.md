@@ -1,5 +1,7 @@
 ==================
-language_detection
+
+Language identification
+
 ==================
 
 Module for language identification
