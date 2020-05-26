@@ -3,7 +3,7 @@ import pytest
 from language_detection.langdetector import LanguageDetector
 
 
-@pytest.fixture(scopre="module")
+@pytest.fixture(scope="module")
 def text_example():
     text = "Ce module est conçu pour détecter la langue d'un text ou une liste de text."
     return text
