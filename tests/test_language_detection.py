@@ -1,6 +1,6 @@
 """Tests for `language-detection` package."""
 import pytest
-from language_detection.langdetector import LanguageDetector
+from language_detection.language_detection import LanguageDetector
 
 LANG = LanguageDetector()
 
