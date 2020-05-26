@@ -26,24 +26,27 @@ Out of box, this module uses [fasttext](https://fasttext.cc/docs/en/language-ide
 pre-trained model for language detection.
 It can detect the language for a sentence, example:
 ``` 
-from language_detection.langdetector import langdetect
-
+from language_detection import LanguageDetector
+lang = LanguageDetector()
 text = "This module is for language identification"
-print(langdetect(text))
+print(lang.langdetect(text))
 ```
 ``` 'fr'```
 
 It also supports batch language detection (list of sentence), example:
 
-```list_doc = [
+```
+sentences = [
     "This module is for language identification",
-    "Ce module est pour l'identification de la langue',
-    "Dieses Modul dient zur Sprachidentifikation,
+    "Ce module est pour l'identification de la langue",
+    "Dieses Modul dient zur Sprachidentifikation",
 ]
-print(langdetect(list_doc))
+print(lang.langdetect(list_doc))
 ```
 
-```['en', 'fr', 'de']```
+```
+['en', 'fr', 'de']
+```
 
 Credits
 -------
