@@ -4,8 +4,6 @@ Language identification
 
 ==================
 
-Module for language identification
-
 
 Installation
 --------
