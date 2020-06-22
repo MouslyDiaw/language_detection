@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """ Module for Language detection """
-from os import path
+from language_detection.helpers.feature_engineering import remove_newline
 from typing import Union, List
-
+from os import path
 import fasttext
 
-from language_detection.helpers.feature_engineering import remove_newline
+
 
 ROOT_PATH = path.dirname(path.abspath(__file__))
 
